@@ -1,0 +1,57 @@
+# All modes use the One-Ply Expectation Policy with fixed parameters. No strategy selection is available.
+# Match/race/train runtime budgets and server connection settings remain independent.
+
+schema_version: 3
+mode: race
+train:
+  save_to_official: false
+  server:
+    url: REPLACE_ME_SERVER_URL
+    insecure: true
+    timeout_seconds: 35
+  competition:
+    room_id: REPLACE_ME_TRAIN_ROOM_ID
+    seed: 20260902
+    poll_interval_seconds: 1.0
+    decision_budget_ms: 3000
+    output_dir: ../competition_record
+  players:
+  - name: 玩家1
+    token: REPLACE_ME_TRAIN_TOKEN_1
+  - name: 玩家2
+    token: REPLACE_ME_TRAIN_TOKEN_2
+  - name: 玩家3
+    token: REPLACE_ME_TRAIN_TOKEN_3
+  - name: 玩家4
+    token: REPLACE_ME_TRAIN_TOKEN_4
+race:
+  supervision:
+    enabled: true
+    heartbeat_timeout_seconds: 30
+    stall_timeout_seconds: 180
+  server:
+    url: REPLACE_ME_SERVER_URL
+    insecure: true
+    timeout_seconds: 35
+  competition:
+    room_id: REPLACE_ME_RACE_ROOM_ID
+    seed: 20260902
+    poll_interval_seconds: 1.0
+    decision_budget_ms: 2000
+    output_dir: ../competition_record
+  participant:
+    token: REPLACE_ME_RACE_TOKEN
+match:
+  server:
+    url: REPLACE_ME_SERVER_URL
+    insecure: true
+    timeout_seconds: 35
+  competition:
+    seed: 20260902
+    poll_interval_seconds: 1.0
+    decision_budget_ms: 3000
+    output_dir: ../competition_record
+  matchmaking:
+    max_parallel_games: 10
+    max_rounds_per_game: 8
+  continuous: false
